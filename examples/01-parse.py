@@ -8,8 +8,6 @@
 # Add the upper directory (where the MBSP module is) to the search path.
 import os, sys; sys.path.insert(0, os.path.join("..", ".."))
 import MBSP
-from MBSP.prepositions import rules
-reload(rules)
 
 if not MBSP.config.autostart:
     MBSP.start()
