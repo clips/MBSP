@@ -1,0 +1,74 @@
+aacute á \xE1
+Aacute Á \xC1
+agrave à \xE0
+Agrave À \xC0
+auml ä \xE4
+Auml Ä \xC4
+acirc â \xE2
+Acirc Â \xC2
+aring å \xE5
+Aring Å \xC5
+atilde ã \xE3
+Atilde Ã \xC3
+aelig æ \xE6
+AElig Æ \xC6
+eacute é \xE9
+egrave è \xE8
+euml ë \xEB
+ecirc ê \xEA
+Eacute É \xC9
+Egrave È \xC8
+Euml Ë \xCB
+Ecirc Ê \xCA
+oacute ó \xF3
+ograve ò \xF2
+ocirc ô \xF4
+otilde õ \xF5
+ouml ö \xF6
+Oacute Ó \xD3
+Ograve Ò \xD2
+Ocirc Ô \xD4
+Otilde Õ \xD5
+Ouml Ö \xD6
+ugrave ù \xF9
+uacute ú \xFA
+ucirc û \xFB
+uuml ü \xFC
+Ugrave Ù \xD9
+Uacute Ú \xDA
+Ucirc Û \xDB
+Uuml Ü \xDC
+igrave ì \xEC
+iacute í \xED
+icirc î \xEE
+iuml ï \xEF
+Igrave Ì \xCC
+Iacute Í \xCD
+Icirc Î \xCE
+Iuml Ï \xCF
+ntilde ñ \xF1
+Ntilde Ñ \xD1
+yuml ÿ \xFD
+szlig ß \xDF
+ccedil ç \xE7
+Ccedil Ç \xC7
+Eth Ð
+eth ð
+oslash ø
+Oslash Ø
+yacute ý
+Yacute Ý
+Thorn Þ
+thorn þ
+# a few missspelled entities
+eaigu é
+uuol ü
+euol ë
+eacutg é
+ewml ë
+guml ë
+gacute é
+eacu~e é
+eacÝte é
+cacute c
+sacute s

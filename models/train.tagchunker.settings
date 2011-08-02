@@ -1,0 +1,8 @@
+e <utt>
+l train.tagchunker.lex.ambi.05
+k train.tagchunker.known.ddwfWawa
+u train.tagchunker.unknown.chnppddwFawasss
+p ddwfWawa
+P chnppddwFawasss
+O K: -a 0 -m J -L 1 -w 1 -k 7 -d IL +vS U: -a 0 -m J -L 1 -k 9 -d IL +vS
+L train.tagchunker.top100

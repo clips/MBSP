@@ -1,0 +1,8 @@
+cannot can not
+#I'm I am
+#won't will not
+#shan't shall not
+#can't can not
+# work around superfluous <utt> bug, this replaces the html chars with the original
+&openparen; (
+&closeparen; )

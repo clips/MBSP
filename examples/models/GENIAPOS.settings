@@ -1,0 +1,8 @@
+e <utt>
+l GENIAPOS.lex.ambi.05
+k GENIAPOS.known.dwdwfWawaw
+u GENIAPOS.unknown.ppsssshdwdwFawaw
+p dwdwfWawaw
+P ppsssshdwdwFawaw
+O K: -a IGTREE +vS U: -a IB1 -mM -L1 -w2 -k9 -dIL +vS
+L GENIAPOS.top200
