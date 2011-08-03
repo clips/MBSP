@@ -162,10 +162,10 @@ def nouns(*args, **kwargs):
     return mbsp.nouns(*args, **kwargs)
     
 def adjectives(*args, **kwargs):
-    return mbsp.adjective(*args, **kwargs)
+    return mbsp.adjectives(*args, **kwargs)
     
 def verbs(*args, **kwargs):
-    return verbs(*args, **kwargs)
+    return mbsp.verbs(*args, **kwargs)
 
 ######################################################################################################
 
