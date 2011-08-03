@@ -37,7 +37,7 @@ Contributing authors:
 - Tom De Smedt
 
 Many thanks go to the people who have contributed by giving us feedback and reporting bugs:
-Frederik Vaassen, Rob Speer, Jamison Miller.
+Frederik Vaassen, Max De Wilde, Rob Speer, Jamison Miller, Avishay Zilka.
 
 MODES
 =====
