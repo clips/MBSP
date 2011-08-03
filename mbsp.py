@@ -813,14 +813,14 @@ def lemmatize(string, tokenize=True, encoding=config.encoding):
         lemmata = True,
        encoding = encoding).split().reduce([LEMMA]).join()
 
-def nouns(string, lemmata=False, encoding=config.encoding):
-    return [t[lemmata and -1 or 0] for t in chunk(string, lemmata, encoding).split().filter(tag="NN*")]
+def nouns(string, lemmatize=False, encoding=config.encoding):
+    return [t[lemmatize and -1 or 0] for t in chunk(string, lemmatize, encoding).split().filter(tag="NN*")]
 
-def adjectives(string, lemmata=False, encoding=config.encoding):
-    return [t[lemmata and -1 or 0] for t in chunk(string, lemmata, encoding).split().filter(tag="JJ*")]
+def adjectives(string, lemmatize=False, encoding=config.encoding):
+    return [t[lemmatize and -1 or 0] for t in chunk(string, lemmatize, encoding).split().filter(tag="JJ*")]
     
-def verbs(string, lemmata=False, encoding=config.encoding):
-    return [t[lemmata and -1 or 0] for t in chunk(string, lemmata, encoding).split().filter(tag="VB*")]
+def verbs(string, lemmatize=False, encoding=config.encoding):
+    return [t[lemmatize and -1 or 0] for t in chunk(string, lemmatize, encoding).split().filter(tag="VB*")]
 
 #### COMMAND LINE #####################################################################################
 # Command line interface for MBSP.
