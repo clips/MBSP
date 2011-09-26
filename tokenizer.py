@@ -420,8 +420,8 @@ def assert_split(a, b, c, sets=[]):
     if b == ",":
         # Splitting "6,000-year" to ["6", ",", "000-year"] is not allowed.
         # Splitting "3(R),3a(S),6a(R)-bis-tetrahydrofuranylurethane" is not allowed in biomedical mode.
-        if len(a)>0 and is_int(a[-1]) or (BIOMEDICAL and a[-1] in "),") and \
-           len(c)>0 and is_int(c[0]):
+        if len(a)>0 and (is_int(a[-1]) or (BIOMEDICAL and a[-1] in "),")) and \
+           len(c)>0 and  is_int(c[0]):
             return None, None, None
     return a, b, c
 
