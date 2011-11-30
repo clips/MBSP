@@ -115,7 +115,7 @@ class Abbreviations(Range):
         ]
         
     def __contains__(self, word):
-        return word.endswith(".") and Range.__contains__(self, word)
+        return "." in  word and Range.__contains__(self, word)
 
 abbreviations = Abbreviations(abbreviations)
 
@@ -644,9 +644,9 @@ ASSERT = "assert"
 SENTENCE_BREAK  = "SENTENCE___BREAK"
 
 def add_sentence_breaks(words=[], marker=SENTENCE_BREAK):
-    """ Returns the list of words with injected "<sentence />" breaks.
+    """ Returns the list of words with injected SENTENCE_BREAK markers.
         ["Hello", ".", "Having", "fun", "?"] =>
-        ["Hello", ".", "<sentence />", "Having", "fun", "?", "<sentence />"]
+        ["Hello", ".", SENTENCE_BREAK, "Having", "fun", "?", SENTENCE_BREAK]
     """
     quote_count = {}
     p, i, n = [], 0, len(words)
@@ -655,7 +655,7 @@ def add_sentence_breaks(words=[], marker=SENTENCE_BREAK):
         word = words[i]
         # We count the occurences of quotes.
         # If at any time the count for a quote is uneven, this means we are inside a quotation, e.g.
-        # "All work and no play. => if the period is followed by a ", it is part of this sentence.
+        # "All work and no play." => if the period is followed by a ", the quote is part of this sentence.
         if word in quotes:
             quote_count[word] = quote_count.get(word,0)+1
         # Periods, ellipsis and some other punctuation mark the end of the sentence,
@@ -679,7 +679,7 @@ def add_sentence_breaks(words=[], marker=SENTENCE_BREAK):
                 stop = False
         # Separated period or ellipsis always ends sentence.
         # For other punctuation marks we verify 
-        # f it is followed by a capitalized letter or open parenthesis.
+        # if it is followed by a capitalized letter or open parenthesis.
         if word in stop_always:
             stop = True
         elif word in stop_assert:
@@ -689,7 +689,23 @@ def add_sentence_breaks(words=[], marker=SENTENCE_BREAK):
     if stop == True:
         p.append(marker)
     return p
-            
+    
+def ignore_cited_breaks(words=[], marker=SENTENCE_BREAK):
+    """ Returns the list of words with SENTENCE_BREAK inside quotes removed.
+        ['"', u'Stop', '.', 'SENTENCE___BREAK', 'Stop', '!', '"', 'he', 'shouted', '.', 'SENTENCE___BREAK'] =>
+        ['"', u'Stop', '.', 'Stop', '!', '"', 'he', 'shouted', '.', 'SENTENCE___BREAK']
+    """
+    p, citation = [], []
+    for i, word in enumerate(words):
+        if word in quotes and word in words[i+1:]: # Scan balanced quotes only.
+            if len(citation) == 0 or citation[-1] != word:
+                citation.append(word) # Open quote.
+            else:
+                citation.pop()        # Close quote.
+        if word != marker or len(citation) == 0:
+            p.append(word)
+    return p
+
 def split_sentences(words=[], marker=SENTENCE_BREAK):
     """ Returns a list of sentences. Each sentence is itself a list of words.
         The input list of words is expected to have been treated with add_sentence_breaks().
@@ -743,10 +759,11 @@ unicode_replacements = {
 # Word ranges to ignore when splitting.
 ignore = [abbreviations, numeric, URI, entities, biomedical]
 
-def split(string, tags=False, replace=unicode_replacements, ignore=ignore):
+def split(string, tags=False, citations=False, replace=unicode_replacements, ignore=ignore):
     """ Splits the string into a list of sentences.
         Punctuation is split from words as individual tokens.
         With tags=False, removes SGML-tags (i.e. anything resembling "<...>") first.
+        With citations=True, cited sentences in quotes are kept together.
         The replace dictionary contains (unicode) strings to normalize.
     """
     # Make sure we have a unicode string.
@@ -774,6 +791,7 @@ def split(string, tags=False, replace=unicode_replacements, ignore=ignore):
     # Add sentence breaks after periods and other punctuation that indicate the end of the sentence.
     # Parse sentence breaks and create a list of individual sentence strings.
     p = add_sentence_breaks(p)
+    p = citations and ignore_cited_breaks(p) or p
     p = split_sentences(p)
     p = [" ".join(sentence) for sentence in p]
     return p
