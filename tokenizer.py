@@ -697,7 +697,10 @@ def ignore_cited_breaks(words=[], marker=SENTENCE_BREAK):
     """
     p, citation = [], []
     for i, word in enumerate(words):
-        if word in quotes and word in words[i+1:]: # Scan balanced quotes only.
+        # Scan balanced quotes only.
+        # If it is an open quote, the closing quote is one of the following words.
+        # If it is a closing quote, it matches the last opened quote.
+        if word in quotes and (word in words[i+1:] or citation and word == citation[-1]):
             if len(citation) == 0 or citation[-1] != word:
                 citation.append(word) # Open quote.
             else:
