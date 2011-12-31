@@ -832,7 +832,6 @@ class Sentence:
         if tag == POS:
             return self.words[index].type
         if tag == CHUNK:
-            print "!!", self.words[index]
             return self.words[index].chunk
         if tag == PNP:
             return self.words[index].pnp
