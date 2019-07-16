@@ -4,16 +4,17 @@ http://ilk.uvt.nl/timbl/
 
 Current version: 6.1.5
 
-BUILDING FROM SOURCE
-====================
+### BUILDING FROM SOURCE
 
 Uncompress the TiMBL source code from timbl-6.1.5.tar.
->>> cd timbl-6.1.5
->>> ./configure --enable-shared=no --enable-static=no --prefix=[FOLDER]
->>> make install
+```
+cd timbl-6.1.5
+./configure --enable-shared=no --enable-static=no --prefix=[FOLDER]
+make install
+```
 
-- This will install TiMBL in the given folder. 
-- The --enable-shared and --enable-static arguments ensure we get everything bundled 
+- This will install TiMBL in the given folder.
+- The --enable-shared and --enable-static arguments ensure we get everything bundled
   inside one nice executable which we can include with MBSP.
 - If you omit the --prefix argument, TiMBL will just install itself in /usr/local/.
   However, for MBSP we only need the executable so it's a good idea to pick another, temporary folder.
