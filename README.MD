@@ -105,7 +105,6 @@ import MBSP
 MBSP.stop()
 ```
 
-# Contact
+### Contact
 
-Vincent Van Asch, vincent.vanasch@ua.ac.be
 Tom De Smedt, tom@organisms.be
